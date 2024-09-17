@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title></head>
+    <body>
+        <form action="/" method="post"> Write your name, please... <input type="text" name="playerName"/>
+            <br>
+            <button type="submit">Start game!</button>
+        </form>
+        <p th:text="${message}"></p>
+    </body>
+</html>

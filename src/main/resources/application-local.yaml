@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:game
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+  flyway:
+    url: jdbc:h2:mem:game
+    user: sa
+    password: password
+    locations: classpath:db/migration/h2
+
+jooq:
+  generator:
+    database:
+      name: org.jooq.meta.h2.H2Database
+      with-includes: .*
+      with-excludes: flyway_schema_history
+      with-input-schema: PUBLIC
+    target:
+      package-name: mochegov.game.db.jooq.domain
+      directory: src/main/java

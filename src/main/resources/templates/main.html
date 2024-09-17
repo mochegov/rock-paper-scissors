@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock! Paper! Scissors!</title>
+    </head>
+    <body>
+        <h1>Welcome, <span th:text="${playerName}"></span></h1>
+        <br>
+        <h4>Points advantage required to win: <span th:text="${pointsAdvantageRequiredToWin}"></span></h4>
+        <br>
+        <h3>Number of wins: <span th:text="${numberOfWins}"></span></h3>
+        <h3>Number of losses: <span th:text="${numberOfLosses}"></span></h3>
+        <br>
+        <a href="/main?logout=true">Log out</a>
+        <br>
+        <table>
+            <h1>Current game score</h1>
+            <tr>
+                <th>My move</th>
+                <th>Your move</th>
+                <th>My result</th>
+                <th>Your result</th>
+            </tr>
+            <tr th:each="move: ${moves}">
+                <td th:text="${move.getMySign()}">mySign</td>
+                <td th:text="${move.getPlayersSign()}">playersSign</td>
+                <td th:text="${move.getMyResult()}">mySign</td>
+                <td th:text="${move.getPlayersResult()}">playersResult</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td th:text="${myScore}">myScore</td>
+                <td></td>
+                <td th:text="${playersScore}">playersScore</td>
+            </tr>
+        </table>
+        <br>
+        <form th:method="POST" th:action="@{/main/move}" th:object="${move}">
+            <br>
+            <input type="text" th:field="*{gameId}" style="display:none"/>
+            <br>
+            <input type="text" th:field="*{mySign}" style="display:none"/>
+            <br>
+            <br>
+            <select th:field="*{playersSign}">
+                <option th:each="sign : ${T(mochegov.game.enums.Sign).values()}"
+                        th:value="${sign}"
+                        th:text="${sign.name}">
+                </option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Play">
+        </form>
+    </body>
+</html>
