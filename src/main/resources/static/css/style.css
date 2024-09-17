@@ -1,0 +1,90 @@
+.authorization{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.welcom{
+    color: rgb(10, 10, 110);
+    padding: 10px;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+table{
+    margin: 30px 0;
+    border-collapse: collapse;
+}
+.row{
+    width: 700px;
+    height: 50px;
+    /* border: 1px solid blue; */
+}
+.gray{
+    color: rgb(103, 103, 117);
+}
+.info__row{
+    padding: 5px;
+}
+.cell{
+    width: 200px;
+    padding: 5px;
+    border:1px solid rgb(10, 10, 110);
+    text-align: center;
+}
+.table__header{
+    font-size: 1.5vw;
+    padding-bottom: 10px;
+}
+.win{
+    color: blue;
+}
+.choice{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+.choice__select{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    padding-right: 20px;
+}
+.choice label{
+    padding-bottom: 10px;
+    color: blue;
+}
+.choice select{
+    height: 60px;
+    font-size: 30px;
+    width: 200px;
+    padding: 5px;
+}
+.button{
+    background-color: rgb(10, 10, 110);
+    width: 200px;
+    height: 60px;
+    color: white;
+    border: 1px solid rgb(10, 10, 110);
+    font-size: 20px;
+}
+.button:hover{
+    background-color: white;
+    width: 200px;
+    height: 60px;
+    color: rgb(10, 10, 110);
+    
+}

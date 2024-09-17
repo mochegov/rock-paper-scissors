@@ -3,61 +3,70 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock! Paper! Scissors!</title>
+        <link th:href="@{/css/style.css}" rel="stylesheet">
     </head>
     <body>
-        <h1>Welcome, <span th:text="${playerName}"></span></h1>
-        <br>
-        <h4>Points advantage required to win: <span th:text="${pointsAdvantageRequiredToWin}"></span></h4>
-        <br>
-        <h3>Number of wins: <span th:text="${numberOfWins}"></span></h3>
-        <h3>Number of losses: <span th:text="${numberOfLosses}"></span></h3>
-        <br>
-        <a href="/main?logout=true">Log out</a>
-        <br>
-        <table>
-            <h1>Current game score</h1>
-            <tr>
-                <th>My move</th>
-                <th>Your move</th>
-                <th>My result</th>
-                <th>Your result</th>
-            </tr>
-            <tr th:each="move: ${moves}">
-                <td th:text="${move.getMySign()}">mySign</td>
-                <td th:text="${move.getPlayersSign()}">playersSign</td>
-                <td th:text="${move.getMyResult()}">mySign</td>
-                <td th:text="${move.getPlayersResult()}">playersResult</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td th:text="${myScore}">myScore</td>
-                <td></td>
-                <td th:text="${playersScore}">playersScore</td>
-            </tr>
-        </table>
-        <br>
-        <form th:method="POST" th:action="@{/main/move}" th:object="${move}">
+        <div class="container">
+            <div class="authorization">
+                <div class="welcom">Welcome, <span th:text="${playerName}"></span></div>
+                <br>
+                    <a href="/main?logout=true">Log out</a>
+                <br>
+            </div>
+            <h1>Game 'ROCK PAPER SCISSORS'</h1>
+            <div class="info">
+                <div class="gray info__row">Points advantage required to win: <span th:text="${pointsAdvantageRequiredToWin}"></span></div>
+                <div class="info__row">Number of wins: <span th:text="${numberOfWins}"></span></div>
+                <div class="info__row">Number of losses: <span th:text="${numberOfLosses}"></span></div>
+            </div>
+            <table>
+                <caption class="table__header">Current game score</caption>
+                <tr class="row">
+                    <th class="cell">Rounds</th>
+                    <th class="cell">My move</th>
+                    <th class="cell">Your move</th>
+                    <th class="cell">My result</th>
+                    <th class="cell">Your result</th>
+                </tr>
+                <tr class="row" th:each="move: ${moves}">
+                    <td class="cell" th:text="${'Round ' + move.getId()}">id</td>
+                    <td class="cell" th:text="${move.getMySign()}">mySign</td>
+                    <td class="cell" th:text="${move.getPlayersSign()}">playersSign</td>
+                    <td class="cell" th:text="${move.getMyResult()}">mySign</td>
+                    <td class="cell" th:text="${move.getPlayersResult()}">playersResult</td>
+                </tr>
+                <tr class="row">
+                    <td class="cell"></td>
+                    <td class="cell"></td>
+                    <td class="cell"></td>
+                    <td class="cell"></td>
+                    <td class="cell"></td>
+                </tr>
+                <tr class="row">
+                    <td class="cell">Game results</td>
+                    <td class="cell"></td>
+                    <td class="cell"></td>
+                    <td class="cell win" th:text="${myScore}">1</td>
+                    <td class="cell win" th:text="${playersScore}">2</td>
+                </tr>
+            </table>
             <br>
-            <input type="text" th:field="*{gameId}" style="display:none"/>
-            <br>
-            <input type="text" th:field="*{mySign}" style="display:none"/>
-            <br>
-            <br>
-            <select th:field="*{playersSign}">
-                <option th:each="sign : ${T(mochegov.game.enums.Sign).values()}"
-                        th:value="${sign}"
-                        th:text="${sign.name}">
-                </option>
-            </select>
-            <br>
-            <br>
-            <input type="submit" value="Play">
-        </form>
+            <form method="POST" th:action="@{/main/move}" th:object="${move}">
+                <input type="text" th:field="*{gameId}" style="display:none"/>
+                <input type="text" th:field="*{mySign}" style="display:none"/>
+                <div class="choice">
+                    <div class="choice__select">
+                        <label for="play-select">Take your choice:</label>
+                        <select id ="play-select" th:field="*{playersSign}">
+                            <option th:each="sign : ${T(mochegov.game.enums.Sign).values()}"
+                                    th:value="${sign}"
+                                    th:text="${sign.name}">
+                            </option>
+                    </select>
+                    </div>
+                    <input type="submit" value="Go" class="button">
+                </div>
+            </form>
+        </div>
     </body>
 </html>

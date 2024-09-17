@@ -50,6 +50,7 @@ public class MainController {
 
                 Game game = gameService.getGameByPlayerName(player.getPlayerName());
                 List<Move> moves = moveService.getGameMoves(game.getId());
+                Move.setIdInOrder(moves);
                 model.addAttribute("moves", moves);
 
                 Map<String, Integer> mapScore = Move.getScore(moves);

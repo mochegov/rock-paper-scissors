@@ -6,6 +6,9 @@ spring:
     name: rock-paper-scissors
   profiles:
     active: local
+  mvc:
+    path-match:
+      matching-strategy: ant_path_matcher
 
 game:
   points-advantage-required-to-win: 2

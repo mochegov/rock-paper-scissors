@@ -29,4 +29,11 @@ public class Move {
             "playersScore", playersScore
         );
     }
+
+    public static void setIdInOrder(List<Move> moves) {
+        int i = 1;
+        for (Move move : moves) {
+            move.setId(i++);
+        }
+    }
 }
