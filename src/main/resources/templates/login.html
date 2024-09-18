@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Login</title></head>
+        <link th:href="@{/css/style.css}" rel="stylesheet">
     <body>
-        <form action="/" method="post"> Write your name, please... <input type="text" name="playerName"/>
+        <div class="container">
+            <h1 class="welcom">Hello! It is "Rock! Paper! Scissors" game!</h1>
             <br>
-            <button type="submit">Start game!</button>
-        </form>
-        <p th:text="${message}"></p>
+            <form action="/" method="post" class="form"> Write your name, please... 
+                <input type="text" name="playerName"/>
+                <button type="submit" class="button">Start game! </button>
+            </form>
+            <p class="error" th:text="${message}">Incorrect username</p>
+        </div>
     </body>
 </html>
